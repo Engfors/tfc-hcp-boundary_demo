@@ -1,7 +1,7 @@
 provider "boundary" {
-  addr                            = data.terraform_remote_state.boundary.outputs.cluster_url
-  password_auth_method_login_name = var.username
-  password_auth_method_password   = var.password
+  addr                   = data.terraform_remote_state.boundary.outputs.cluster_url
+  auth_method_login_name = var.username
+  auth_method_password   = var.password
 }
 
 
