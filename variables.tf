@@ -1,8 +1,8 @@
-variable "tfc_access_organization" {
+variable "tfc_state_org" {
     default = "JoeStack"
 }
 
-variable "tfc_access_workspace" {
+variable "tfc_state_ws" {
     default = "tfc-hcp-boundary_cluster"
 }
 
