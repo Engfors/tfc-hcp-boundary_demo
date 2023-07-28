@@ -51,3 +51,9 @@ resource "boundary_scope" "project" {
   scope_id               = boundary_scope.org.id
   auto_create_admin_role = true
 }
+
+resource "boundary_worker" "controller_led" {
+  scope_id    = boundary_scope.org.id
+  name        = "worker 1"
+  description = "self managed worker with controller led auth"
+}
