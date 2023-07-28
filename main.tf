@@ -11,8 +11,8 @@ resource "boundary_scope" "global" {
 }
 
 resource "boundary_scope" "org" {
-  name                     = "organization_one"
-  description              = "My first scope!"
+  name                     = "Demo organization_one"
+  description              = "Dedicated scope for demonstration purpose"
   scope_id                 = boundary_scope.global.id
   auto_create_admin_role   = true
   auto_create_default_role = true
@@ -39,15 +39,15 @@ resource "boundary_user" "user" {
 
 resource "boundary_role" "org_admin" {
   name          = "org_admin"
-  description   = "Admin role"
+  description   = "Admin role within Demo Org"
   principal_ids = [boundary_user.user.id]
   grant_strings = ["id=*;type=*;actions=*"]
   scope_id      = boundary_scope.org.id
 }
 
 resource "boundary_scope" "project" {
-  name                   = "project_one"
-  description            = "My first Project scope!"
+  name                   = "Demo Project_one"
+  description            = "First Project within Demo's Org scope!"
   scope_id               = boundary_scope.org.id
   auto_create_admin_role = true
 }
