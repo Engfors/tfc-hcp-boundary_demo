@@ -25,7 +25,7 @@ resource "boundary_auth_method" "password" {
 
 resource "boundary_account_password" "user" {
   auth_method_id = boundary_auth_method.password.id
-  type           = "password"
+  #type           = "password"
   login_name     = var.org_username
   password       = var.org_password
 }
@@ -35,4 +35,19 @@ resource "boundary_user" "user" {
   description = "${var.org_username}'s user resource"
   account_ids = [boundary_account_password.user.id]
   scope_id    = boundary_scope.org.id
+}
+
+resource "boundary_role" "org_admin" {
+  name          = "org_admin"
+  description   = "Admin role"
+  principal_ids = [boundary_user.user.id]
+  grant_strings = ["id=*;type=*;actions=*"]
+  scope_id      = boundary_scope.org.id
+}
+
+resource "boundary_scope" "project" {
+  name                   = "project_one"
+  description            = "My first Project scope!"
+  scope_id               = boundary_scope.org.id
+  auto_create_admin_role = true
 }
