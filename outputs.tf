@@ -1,4 +1,4 @@
-output "activation_toke" {
+output "activation_token" {
   value = boundary_worker.controller_led.controller_generated_activation_token
 }
 
