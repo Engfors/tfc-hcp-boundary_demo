@@ -6,10 +6,18 @@ variable "tfc_state_ws" {
     default = "tfc-hcp-boundary_cluster"
 }
 
-variable "username" {
-  description = "Boundary Username"
+variable "adm_username" {
+  description = "Boundary Admin Username"
 }
 
-variable "password" {
-  description = "Boundary Password"
+variable "adm_password" {
+  description = "Boundary Admin Password"
+}
+
+variable "org_username" {
+  description = "Boundary Admin Username"
+}
+
+variable "org_password" {
+  description = "Boundary Admin Password"
 }
