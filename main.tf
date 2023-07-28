@@ -1,10 +1,10 @@
 locals {
-  boundary_cluster = data.terraform_remote_state.boundary.outputs.cluster_url
+  boundary_cluster_addr = data.terraform_remote_state.boundary.outputs.cluster_url
 }
 
 provider "boundary" {
   #addr                   = data.terraform_remote_state.boundary.outputs.cluster_url
-  addr                   = local.boundary_cluster
+  addr                   = local.boundary_cluster_addr
   auth_method_login_name = var.adm_username
   auth_method_password   = var.adm_password
 }

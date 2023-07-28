@@ -3,5 +3,5 @@ output "activation_toke" {
 }
 
 output "boundary_cluster" {
-  value = local.boundary_cluster
+  value = local.boundary_cluster_addr
 }
