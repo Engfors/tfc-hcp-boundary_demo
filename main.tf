@@ -1,5 +1,6 @@
 locals {
   boundary_cluster_addr = data.terraform_remote_state.boundary.outputs.cluster_url
+  #boundary_worker_token = boundary_worker.controller_led.controller_generated_activation_token
 }
 
 provider "boundary" {
