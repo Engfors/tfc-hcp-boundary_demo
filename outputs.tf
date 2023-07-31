@@ -5,3 +5,11 @@ output "activation_token" {
 output "boundary_cluster" {
   value = local.boundary_cluster_addr
 }
+
+output "demo_org_id" {
+  value = boundary_scope.org.id
+}
+
+output "demo_project_id" {
+  value = boundary_scope.project.id
+}
