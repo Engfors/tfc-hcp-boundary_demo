@@ -43,13 +43,13 @@ resource "boundary_user" "user" {
   scope_id    = boundary_scope.org.id
 }
 
-resource "boundary_role" "org_admin" {
-  name          = "org_admin"
-  description   = "Admin role within Demo Org"
-  principal_ids = [boundary_user.user.id]
-  grant_strings = ["id=*;type=*;actions=*"]
-  scope_id      = boundary_scope.org.id
-}
+# resource "boundary_role" "org_admin" {
+#   name          = "org_admin"
+#   description   = "Admin role within Demo Org"
+#   principal_ids = [boundary_user.user.id]
+#   grant_strings = ["id=*;type=*;actions=*"]
+#   scope_id      = boundary_scope.org.id
+# }
 
 resource "boundary_scope" "project" {
   name                   = "Demo Project_one"
@@ -57,6 +57,16 @@ resource "boundary_scope" "project" {
   scope_id               = boundary_scope.org.id
   auto_create_admin_role = true
 }
+
+resource "boundary_role" "project_admin" {
+  name          = "project_admin"
+  description   = "Admin role within Demo Project"
+  principal_ids = [boundary_user.user.id]
+  grant_strings = ["id=*;type=*;actions=*"]
+  scope_id      = boundary_scope.project.id
+}
+
+
 
 resource "boundary_worker" "controller_led" {
   depends_on = [ 
