@@ -69,11 +69,6 @@ resource "boundary_role" "project_admin" {
 
 
 resource "boundary_worker" "controller_led" {
-  depends_on = [ 
-    boundary_scope.project,
-    boundary_role.org_admin,
-    boundary_user.user
-    ]
   scope_id    = boundary_scope.org.id
   name        = "worker 1"
   description = "self managed worker with controller led auth"
